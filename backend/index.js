@@ -5,6 +5,8 @@ import cors from 'cors';
 import  multer  from 'multer';
 import  mongoose  from 'mongoose';
 import authRoute from './routes/auth.js'
+import userRoute from './routes/user.js'
+import postRoute from './routes/post.js'
 dotenv.config();
 
 const PORT = process.env.PORT || 6001;
@@ -36,4 +38,5 @@ app.post("/auth/register", upload.single("picture"),register);
 
 /*  Routes */
 app.use('/auth',authRoute);
-
+app.use('/users',userRoute);
+app.use('/posts',postRoute);
