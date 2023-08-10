@@ -1,4 +1,5 @@
 import {register} from './controllers/auth.js'
+import { createPost } from './controllers/post.js';
 import  express  from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
@@ -35,7 +36,7 @@ const upload = multer({storage});
 
 /*  Routes Accepting Files  */
 app.post("/auth/register", upload.single("picture"),register);
-
+app.post("post/create",upload.single("picture",createPost));
 /*  Routes */
 app.use('/auth',authRoute);
 app.use('/users',userRoute);
