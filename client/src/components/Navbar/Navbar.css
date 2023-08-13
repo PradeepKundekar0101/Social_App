@@ -1,0 +1,45 @@
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+}
+.navbar-nav  .nav-item button{
+    border: none;
+    color: rgb(0, 32, 88);
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+}
+.navbar-nav  .nav-item button:focus{
+    outline: none;
+}
+ul li{
+    margin: 0px 20px;
+}
+a{
+    margin: 0px 20px;
+}
+#icons{
+    align-self: flex-start;
+    margin: 0px auto;
+    border-radius: 10px;
+    padding: 8px 50px;
+    background-color: rgb(237, 237, 237);
+}
+#dark-icons
+{
+   
+    align-self: flex-start;
+    margin: 0px auto;
+    border-radius: 10px;
+    padding: 8px 50px;
+    background-color: #292929;
+}
+#dark-icons button{
+    color: #fff;
+}
+#auth
+{
+    margin-bottom: 0px;
+}
