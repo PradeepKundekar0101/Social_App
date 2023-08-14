@@ -5,13 +5,13 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 //  REGISTER
 export const register = async (req,res)=>{
-    const {firstname,lastname,password,email,phonenumber,location,occupation,picturePath} = req.body;
+    const {firstname,lastname,password,email,phonenumber,location,occupation,picture} = req.body;
     try {
        
         const salt = await bycrypt.genSalt();
         const hashPass = await bycrypt.hash(password,salt);
         const newuser = new user({
-            firstname,lastname,hashPass,email,phonenumber,location,occupation,picturePath,
+            firstname,lastname,hashPass,email,phonenumber,location,occupation,picture,
             view: Math.floor(Math.random()*1000),
             impression:Math.floor(Math.random()*1000)
         });

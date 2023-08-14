@@ -1,0 +1,79 @@
+.body-login{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(0deg,#0007,#0007), url("../../../public/login_bg.jpeg");
+    background-size: cover;
+}
+#body-dark
+{
+    background-color: #292929;
+}
+.form-light
+{
+    background-color: #fff;
+}
+#form-dark
+{
+    color: #fff;
+    background-color: #242424;
+}
+#form-dark input{
+    background-color: #5b5b5b;
+    color: #ffffff;
+}
+#form-dark input::placeholder{
+    color: #fff;
+}
+#form-dark input:focus{
+    outline: 1px solid #fff;
+}
+.form-container-login-login{
+    background-color: rgb(247, 247, 247);
+    padding: 100px 10vw;
+    border-radius: 10px;
+    border: 1px solid#000;
+}
+.form-container-login form
+{
+    
+    display: flex;
+    flex-direction: column;
+}
+.form-container-login form a{
+    margin: 0;
+    padding: 0;
+}
+.form-container-login form label{
+    margin: 10px 0px;
+    font-size: 20px;
+}
+.form-container-login form input{
+    border: none;
+    padding: 10px 30px;
+    width: 300px;
+    border: 1px solid #000;
+    border-radius: 8px;
+}
+#form-light input[type="submit"]
+{
+    color: #fff;
+}
+#form-dark input[type="submit"]
+{
+    background-color: rgb(4, 143, 249);
+    color: #fff;
+
+}
+input[type="submit"]
+{
+    border: none;
+    margin: 20px 0px;
+    background-color: rgb(4, 143, 249);
+    font-weight: bold;
+}
+#form-dark a
+{
+    color: rgb(58, 180, 251);
+}

@@ -31,7 +31,7 @@ const UserSchema = mongoose.Schema({
         min:10,
         max:10,
     },
-    picturePath:{
+    picture:{
         type: String,
         default:"",
     },

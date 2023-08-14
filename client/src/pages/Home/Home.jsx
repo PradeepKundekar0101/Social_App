@@ -1,9 +1,9 @@
 import React from 'react'
-import Navbar from '../../components/Navbar/Navbar'
+import NavBar from '../../components/Navbar/Navbar'
 const Home = () => {
   return (
     <>
-        <Navbar/>
+        <NavBar/>
         
     </>
   )

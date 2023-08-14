@@ -1,0 +1,97 @@
+.body-register{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(0deg,#0008,#0008), url('../../../public/bg1.jpg');
+    background-size: cover;
+}
+
+.form-register
+{
+    height: 350px;
+    width: 35vw;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+   
+}
+.progressBar{
+    height: 7px;
+    width: 35vw;
+    background-color: #000000;
+    margin: 0px 0px;
+    overflow: hidden;
+}
+.progressBar div{
+    transition: 0.4s ease-in-out;
+    height: 100%;
+    background-color: rgb(0, 113, 242);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.form-register .header
+{
+    margin-top: 10px;
+}
+.steps-input
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.steps-input input{
+    width: 80%;
+    padding: 4px 4px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    border: none;
+    border-bottom: 1px solid #000;
+    font-size: 18px;
+}
+.steps-input input:focus{
+    outline: none;
+    border-bottom: 1px solid #0051ff;
+}
+.form-register h1{
+    text-align: center;
+}
+
+.form-register h4{
+    font-size: 1rem;
+    color: #474747;
+    text-align: center;
+}
+
+.form-register .footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 4vw;
+    justify-self: flex-start;
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    /* left: 100%; */
+    /* position: fixed; */
+    /* top: 100%; */
+}
+.form-register .footer button
+{
+    border: none;
+    color: #fff;
+    text-align: center;
+    background-color: #000;
+    margin-left:10px;
+    padding: 5px 8px;
+}
+.form-register .body{
+    padding: 30px 0px;
+}
+
+.drop-box{
+    width: 100%;
+    height: 80px;
+    border: 2px dashed #000;
+}
