@@ -5,11 +5,15 @@ const tokenSlice = createSlice({
     reducers:{
         setToken(state,action)
         {
-            state = action.payload
+            localStorage.setItem("token",action.payload);
+            state = action.payload;
+            return state;
         },
         removeToken(state,action)
         {
-            state = null
+            localStorage.removeItem("token");
+            state = null;
+            return state;
         }
     }
 });
