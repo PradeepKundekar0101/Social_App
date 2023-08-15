@@ -6,10 +6,12 @@ import App from './App';
 import {createBrowserRouter,RouterProvider} from "react-router-dom";
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import Profile from './pages/Profile/Profile';
+
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <App/>,
+      element: <App/>
     },
     {
       path: "/login",
@@ -18,6 +20,10 @@ import Register from './pages/Register/Register';
     {
       path: "/register",
       element: <Register/>,
+    },
+    {
+      path: "/profile/:id",
+      element: <Profile/>
     },
   ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));

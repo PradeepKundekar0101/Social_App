@@ -1,16 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect} from 'react'
 import './Login.css'
 import { Link } from 'react-router-dom'
 import NavBar from '../../components/Navbar/Navbar'
 import { useSelector,useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {setToken} from '../../store/slices/tokenSlice'
 import {setUser} from '../../store/slices/userSlice'
 const Login = () => {
     const mode = useSelector((state)=>{ return state.mode });
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [formDetails,setformDetails] = useState({ email:"",password:"" });
+    
+    useEffect(() => {
+        if(localStorage.getItem("token"))  navigate("/");
+        // eslint-disable-next-line
+    }, []);
+
     const handleLoginSubmit = async(e)=>{
-      console.log(formDetails)
+     
       try {
         const response = await fetch("http://localhost:8000/auth/login",{
           method:"POST",
@@ -21,8 +29,8 @@ const Login = () => {
       });
       const json =await response.json();
       dispatch(setToken(json.token));
-      dispatch(setUser(json.userFound));
-      
+      dispatch(setUser(json.userFound)); 
+      navigate("/");
       } catch (error) {
         console.log(error)
       }

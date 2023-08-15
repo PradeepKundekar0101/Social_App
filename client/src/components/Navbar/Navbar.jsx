@@ -3,20 +3,30 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeMode } from '../../store/slices/modeSlice';
 import { FaBell, FaMoon, FaSun, FaEnvelope, FaQuestionCircle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 import './Navbar.css';
-
+import { removeToken } from '../../store/slices/tokenSlice';
+import { removeUser } from '../../store/slices/userSlice';
 const NavBar = () => {
   const mode = useSelector((state) => state.mode);
-  const token = useSelector((state) => state.token);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
+  const displayAuth = ()=>{
+    if(user) 
+      return <NavDropdown title={user.firstname+" "+user.lastname} id="navbarDropdown">
+      <NavDropdown.Item onClick={()=>{dispatch(removeToken());dispatch(removeUser());navigate("/login")}}>LogOut</NavDropdown.Item>
+    </NavDropdown>
+  return <div className="auth-btns">
+      <Link to="/login">Login</Link>
+      <Link to="/register">Register</Link>
+      </div>
+}
   return (
-    
     <Navbar
       className={
         mode === 'light'
@@ -51,19 +61,7 @@ const NavBar = () => {
           </Nav.Item>
         </Nav>
         <Nav id="auth">
-          {!token ? (
-            <div className="auth-btns">
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
-            </div>
-          ) : (
-            <NavDropdown title="User Name" id="navbarDropdown">
-              <NavDropdown.Item href="/">Action</NavDropdown.Item>
-              <NavDropdown.Item href="/">Another action</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/">Something else here</NavDropdown.Item>
-            </NavDropdown>
-          )}
+          {displayAuth()}
         </Nav>
       </Navbar.Collapse>
     </Navbar>

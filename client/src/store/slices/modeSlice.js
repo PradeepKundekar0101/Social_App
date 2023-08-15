@@ -5,7 +5,7 @@ const modeSlice = createSlice({
     reducers:{
         changeMode(state,action)
         {
-            console.log(state);
+            
             state = state==="light"?"dark":"light";
             return state;
         }

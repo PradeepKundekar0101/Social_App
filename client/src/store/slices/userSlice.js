@@ -5,13 +5,19 @@ const userSlice = createSlice({
     reducers:{
         setUser(state,action)
         {
-            state = action.payload
+            state = action.payload;
+            console.log(action.payload);
+            localStorage.setItem("user",action.payload);
+            return state;
         },
         removeUser(state,action)
         {
-            state = null
+            state = null;
+            localStorage.removeItem("user");
+            return state;
         }
     }
 });
 export default userSlice.reducer;
-export const {setUser,removeUSer} = userSlice.actions;
+export const {setUser,removeUser} = userSlice.actions;
+
