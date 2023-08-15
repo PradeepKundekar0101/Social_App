@@ -5,13 +5,12 @@ import './Register.css'
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setToken } from "../../store/slices/tokenSlice";
-import { setUser } from "../../store/slices/userSlice";
+
 const Register = () => {
-    const dispatch = useDispatch();
+
     const navigate = useNavigate();
+    
     const [formDetails,setFormDetails] = useState({ firstname:"",
     lastname:"",
     email:"",
@@ -21,6 +20,7 @@ const Register = () => {
     location:"",
     occupation:"",}
     );
+    
     const [profilePicture,setProfilePicture] = useState("");
     const [page, setPage] = useState(0);
    
@@ -51,7 +51,7 @@ const Register = () => {
         formData.append('phonenumber', formDetails.phonenumber);
         formData.append('location', formDetails.location);
         formData.append('occupation', formDetails.occupation);
-        formData.append('picture', profilePicture.name);
+        formData.append('picture', profilePicture);
 
         try {
             const response = await fetch("http://localhost:8000/auth/register",{
@@ -59,6 +59,7 @@ const Register = () => {
                 body:formData
             });
             const json =await response.json();
+            console.log(json)
             if(json){
                 // dispatch()
                 navigate("/login");
@@ -72,7 +73,6 @@ const Register = () => {
     <>
     <NavBar/>
     <div className="body-register">
-
         <div className="form-register">
             <div className="progressBar">
                 <div style={{width: page===0?"33%":page===1?"66%":"110%",}}></div>

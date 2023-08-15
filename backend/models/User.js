@@ -23,13 +23,13 @@ const UserSchema = mongoose.Schema({
     password:{
         type:String,
         require:true,
-        min:8,
+        min:3,
     },
     phone:{
         type:Number,
         require:true,
-        min:10,
-        max:10,
+        // min:10,
+        // max:10,
     },
     picture:{
         type: String,

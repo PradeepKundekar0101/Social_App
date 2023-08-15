@@ -1,24 +1,24 @@
 import jwt from "jsonwebtoken";
-import  bycrypt from 'bcrypt';
+import  bcrypt from 'bcrypt';
 import user from "../models/User.js";
-const JWT_SECRET = process.env.JWT_SECRET;
+const SECRET_KEY = process.env.JWT_SECRET;
 
 //  REGISTER
 export const register = async (req,res)=>{
-    const {firstname,lastname,password,email,phonenumber,location,occupation,picture} = req.body;
+    
+    const {firstname,lastname,password,email,phonenumber,location,occupation} = req.body;
+    const picture = req.file.filename;
     try {
-       
-        const salt = await bycrypt.genSalt();
-        const hashPass = await bycrypt.hash(password,salt);
+        const hashPass = await bcrypt.hash(password,10);
         const newuser = new user({
-            firstname,lastname,hashPass,email,phonenumber,location,occupation,picture,
+            firstname,lastname,password:hashPass,email,phonenumber,location,occupation,picture,
             view: Math.floor(Math.random()*1000),
             impression:Math.floor(Math.random()*1000)
         });
         const save = await newuser.save();
         res.status(201).json(save);
     } catch (error) {
-        res.status(500).json(error.message);
+        res.status(500).json(error);
     }
 }
 
@@ -27,16 +27,20 @@ export const login = async (req,res)=>{
     const {email,password} = req.body;
     try {
         
-        const userFound = await user.find({email});
+        const userFound = await user.findOne({email});
+      
         if(!userFound) return res.status(404).json({"message":"Invalid Credentials"});
-        const passwordMatch = await bycrypt.compare(password,userFound.password);
+        const passwordMatch = await bcrypt.compare(password,userFound.password);
+        console.log("Password match = "+passwordMatch)
         if(passwordMatch){
-            const token = jwt.sign(userFound, JWT_SECRET);
-            res.status(200).json({token,userFound});
+            
+            const token = jwt.sign({userFound}, process.env.PORT);
+            console.log(token)
+            return res.status(200).json({token,userFound});
         }
         return res.status(404).json({"message":"Invalid Credentials"});
 
     } catch (error) {
-        res.status(500).json(error.message);
+        res.status(500).json(error);
     }
 }

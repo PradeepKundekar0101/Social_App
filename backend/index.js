@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 6001;
 const app = express();
 
 app.use(cors());
+app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URL).then(()=>{
     app.listen(PORT,()=>{

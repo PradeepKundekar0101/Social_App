@@ -1,5 +1,5 @@
 import React from 'react'
-import Dropzone from 'react-dropzone'
+
 const Step3 = (props) => {
     const {formDetails,setFormDetails,setProfilePicture} = props;
     const handleProfilePictureChange=(e)=>{
@@ -26,7 +26,7 @@ const Step3 = (props) => {
          
           <input
             type="file"
-            id="profilePicture"
+            id="picture"
             accept="image/*"
             onChange={handleProfilePictureChange}
           />
